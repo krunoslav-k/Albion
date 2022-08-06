@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.Adapter
 import androidx.recyclerview.widget.RecyclerView
 
-class QuestionAdapter(private val questions: ArrayList<Question>) : RecyclerView.Adapter<QuestionAdapter.QuestionViewHolder> {
+class QuestionAdapter(private val questions: ArrayList<Question>) : RecyclerView.Adapter<QuestionAdapter.QuestionViewHolder>() {
 
 
 
@@ -23,7 +23,7 @@ class QuestionAdapter(private val questions: ArrayList<Question>) : RecyclerView
 
     class QuestionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        val questionText
+
 
     }
 }
