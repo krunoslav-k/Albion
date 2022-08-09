@@ -20,11 +20,15 @@ class LearnFragment : Fragment() {
         units.add("Nouns")
         units.add("Verbs")
         units.add("Adjectives")
+        val lessons = ArrayList<String>(10)
+        lessons.add("Present Simple I")
 
         view.findViewById<RecyclerView>(R.id.units_rv).apply {
             layoutManager = LinearLayoutManager(this@LearnFragment.context)
-            adapter = UnitRecyclerAdapter(units)
+            adapter = UnitRecyclerAdapter(units, lessons)
         }
+
+
 
         return view
     }

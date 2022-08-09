@@ -3,21 +3,20 @@ package com.krunoslavkazalicki.albion
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class QuestionAdapter(private var questions: List<Question>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class QuestionRecyclerAdapter(private var questions: List<Question>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return QuestionViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.unit_item, parent, false))
+        return QuestionViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.question_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
-            is QuestionAdapter.QuestionViewHolder -> {
+            is QuestionViewHolder -> {
                 holder.bind(questions[position])
             }
         }
@@ -27,8 +26,7 @@ class QuestionAdapter(private var questions: List<Question>) : RecyclerView.Adap
         return questions.size
     }
 
-    class QuestionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-
+    class QuestionViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         private val questionTextTextView: TextView = itemView.findViewById(R.id.questionText_tv)
         private val answearsRadioGroup: RadioGroup = itemView.findViewById(R.id.answears_rg)
         private val firstAnswearRadioButton: RadioButton = itemView.findViewById(R.id.firstAnswear_rb)
@@ -43,6 +41,5 @@ class QuestionAdapter(private var questions: List<Question>) : RecyclerView.Adap
             thirdAnswearRadioButton.text = question.answears[2]
             fourthAnswearRadioButton.text = question.answears[3]
         }
-
     }
 }
