@@ -30,7 +30,7 @@ class LessonRecyclerAdapter(private var lessons: List<String>): RecyclerView.Ada
         private val lessonImageView: ImageView = itemView.findViewById(R.id.lessonImage_iv)
 
         fun bind(lesson: String){
-
+            lessonNameTextView.text = lesson
         }
 
     }

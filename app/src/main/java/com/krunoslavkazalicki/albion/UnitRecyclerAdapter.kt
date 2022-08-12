@@ -1,5 +1,6 @@
 package com.krunoslavkazalicki.albion
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class UnitRecyclerAdapter(private var units: List<String>, private var lessons: List<String>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
+    //TODO lessons da je lista lista stringova tako da za svaki element liste unit ima lista lista
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return UnitViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.unit_item, parent, false))
     }
@@ -17,11 +18,9 @@ class UnitRecyclerAdapter(private var units: List<String>, private var lessons: 
         when(holder) {
             is UnitViewHolder -> {
                 holder.bind(units[position])
+                holder.createNestedRecyclerView(lessons)
             }
         }
-
-        val lessonRecyclerAdapter = LessonRecyclerAdapter(lessons)
-
     }
 
     override fun getItemCount(): Int {
@@ -30,10 +29,17 @@ class UnitRecyclerAdapter(private var units: List<String>, private var lessons: 
 
     class UnitViewHolder(itemView:View): RecyclerView.ViewHolder(itemView){
         private val unitNameTextView: TextView = itemView.findViewById(R.id.unitName_tv)
-        val lessonsRecyclerView: RecyclerView = itemView.findViewById(R.id.unitLessons_rv)
+        val lessonsRecyclerView: RecyclerView = itemView.findViewById(R.id.lessons_rv)
 
         fun bind(unit: String){
             unitNameTextView.text = unit
+        }
+
+        fun createNestedRecyclerView(lessons: List<String>){
+            lessonsRecyclerView.apply {
+                layoutManager = LinearLayoutManager(itemView.context)
+                adapter = LessonRecyclerAdapter(lessons)
+            }
         }
 
     }
