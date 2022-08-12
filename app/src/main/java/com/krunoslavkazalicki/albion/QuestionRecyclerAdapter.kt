@@ -1,5 +1,7 @@
 package com.krunoslavkazalicki.albion
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,25 +10,28 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class QuestionRecyclerAdapter(private var questions: List<Question>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class QuestionRecyclerAdapter(private var questions: List<Question>, private val editor: SharedPreferences.Editor?): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return QuestionViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.question_item, parent, false))
+        return QuestionViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.question_item, parent, false), editor)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is QuestionViewHolder -> {
                 holder.bind(questions[position])
+                holder.checkAnswears(position)
             }
         }
+
+
     }
 
     override fun getItemCount(): Int {
         return questions.size
     }
 
-    class QuestionViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class QuestionViewHolder(itemView: View, private val editor: SharedPreferences.Editor?): RecyclerView.ViewHolder(itemView){
         private val questionTextTextView: TextView = itemView.findViewById(R.id.questionText_tv)
         private val answearsRadioGroup: RadioGroup = itemView.findViewById(R.id.answears_rg)
         private val firstAnswearRadioButton: RadioButton = itemView.findViewById(R.id.firstAnswear_rb)
@@ -41,5 +46,36 @@ class QuestionRecyclerAdapter(private var questions: List<Question>): RecyclerVi
             thirdAnswearRadioButton.text = question.answears[2]
             fourthAnswearRadioButton.text = question.answears[3]
         }
+
+        fun checkAnswears(position: Int){
+            answearsRadioGroup.setOnCheckedChangeListener { radioGroup, checkedId ->
+                val radio = itemView.findViewById<RadioButton>(checkedId)
+
+                when (radio) {
+                    firstAnswearRadioButton -> {
+                        editor.apply {
+                            this?.putString("answear${position}", "${firstAnswearRadioButton.text.toString()}")
+                        }?.apply()
+                    }
+                    secondAnswearRadioButton -> {
+                        editor.apply {
+                            this?.putString("answear${position}", "${secondAnswearRadioButton.text.toString()}")
+                        }?.apply()
+                    }
+                    thirdAnswearRadioButton -> {
+                        editor.apply {
+                            this?.putString("answear${position}", "${thirdAnswearRadioButton.text.toString()}")
+                        }?.apply()
+                    }
+                    fourthAnswearRadioButton -> {
+                        editor.apply {
+                            this?.putString("answear${position}", "${fourthAnswearRadioButton.text.toString()}")
+                        }?.apply()
+                    }
+                }
+
+            }
+        }
+
     }
 }
