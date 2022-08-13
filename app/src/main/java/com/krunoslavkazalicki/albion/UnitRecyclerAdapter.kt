@@ -8,8 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class UnitRecyclerAdapter(private var units: List<String>, private var lessons: List<String>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    //TODO lessons da je lista lista stringova tako da za svaki element liste unit ima lista lista
+class UnitRecyclerAdapter(private var units: List<String>, private var lessonsLists: List<List<String>>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return UnitViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.unit_item, parent, false))
     }
@@ -18,7 +17,14 @@ class UnitRecyclerAdapter(private var units: List<String>, private var lessons: 
         when(holder) {
             is UnitViewHolder -> {
                 holder.bind(units[position])
-                holder.createNestedRecyclerView(lessons)
+                holder.createNestedRecyclerView(lessonsLists[position])
+
+           /*     if (units[position] == "Verbs"){
+                    holder.createNestedRecyclerView(lessonsLists[0])
+                } else if (units[position] == "Nouns") {
+                    holder.createNestedRecyclerView(lessonsLists[1])
+                }*/
+                //holder.createNestedRecyclerView(lessons)
             }
         }
     }
@@ -37,7 +43,7 @@ class UnitRecyclerAdapter(private var units: List<String>, private var lessons: 
 
         fun createNestedRecyclerView(lessons: List<String>){
             lessonsRecyclerView.apply {
-                layoutManager = LinearLayoutManager(itemView.context)
+                layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = LessonRecyclerAdapter(lessons)
             }
         }
