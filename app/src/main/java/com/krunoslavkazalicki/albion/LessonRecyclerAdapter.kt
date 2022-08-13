@@ -17,6 +17,9 @@ class LessonRecyclerAdapter(private var lessons: List<String>): RecyclerView.Ada
         when(holder) {
             is LessonRecyclerAdapter.LessonViewHolder -> {
                 holder.bind(lessons[position])
+                holder.itemView.setOnClickListener {
+
+                }
             }
         }
     }

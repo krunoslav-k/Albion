@@ -18,13 +18,6 @@ class UnitRecyclerAdapter(private var units: List<String>, private var lessonsLi
             is UnitViewHolder -> {
                 holder.bind(units[position])
                 holder.createNestedRecyclerView(lessonsLists[position])
-
-           /*     if (units[position] == "Verbs"){
-                    holder.createNestedRecyclerView(lessonsLists[0])
-                } else if (units[position] == "Nouns") {
-                    holder.createNestedRecyclerView(lessonsLists[1])
-                }*/
-                //holder.createNestedRecyclerView(lessons)
             }
         }
     }
