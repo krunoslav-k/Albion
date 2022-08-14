@@ -25,6 +25,8 @@ class LearnFragment : Fragment() {
         val adjectivesLesssons: List<String> = listOf("Superlative", "General")
         var lessonsList: List<List<String>> = listOf(verbsLessons, nounsLessons, adjectivesLesssons)
 
+        val transaction = fragmentManager
+
         view.findViewById<RecyclerView>(R.id.units_rv).apply {
             layoutManager = LinearLayoutManager(this@LearnFragment.context)
             adapter = UnitRecyclerAdapter(units, lessonsList)
