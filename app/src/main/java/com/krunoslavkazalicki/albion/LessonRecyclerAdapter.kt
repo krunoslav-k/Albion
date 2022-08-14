@@ -21,7 +21,7 @@ class LessonRecyclerAdapter(private var lessons: List<String>): RecyclerView.Ada
             is LessonRecyclerAdapter.LessonViewHolder -> {
                 holder.bind(lessons[position])
                 holder.itemView.setOnClickListener {
-                    var lessonKey = "Present Simple"
+                    var lessonKey = lessons[position]
                     holder.startLessonFragment(lessonKey)
                 }
             }
