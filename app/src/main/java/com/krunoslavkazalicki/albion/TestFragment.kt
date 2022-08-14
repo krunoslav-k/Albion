@@ -83,6 +83,10 @@ class TestFragment : Fragment() {
                             Log.w(ContentValues.TAG, "Error adding document", e)
                         }
                 }
+
+            val fragment = TestResultsFragment()
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.fragment, fragment)?.commit()
         }
 
         return view
