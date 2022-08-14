@@ -23,8 +23,6 @@ class QuestionRecyclerAdapter(private var questions: List<Question>, private val
                 holder.checkAnswears(position)
             }
         }
-
-
     }
 
     override fun getItemCount(): Int {

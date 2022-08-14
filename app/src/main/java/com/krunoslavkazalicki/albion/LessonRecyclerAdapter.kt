@@ -21,7 +21,8 @@ class LessonRecyclerAdapter(private var lessons: List<String>): RecyclerView.Ada
             is LessonRecyclerAdapter.LessonViewHolder -> {
                 holder.bind(lessons[position])
                 holder.itemView.setOnClickListener {
-                    holder.startLessonFragment()
+                    var lessonKey = "Present Simple"
+                    holder.startLessonFragment(lessonKey)
                 }
             }
         }
@@ -39,8 +40,8 @@ class LessonRecyclerAdapter(private var lessons: List<String>): RecyclerView.Ada
             lessonNameTextView.text = lesson
         }
 
-        fun startLessonFragment(){
-            val fragment = HomeFragment()
+        fun startLessonFragment(lessonKey: String){
+            val fragment = LessonFragment(lessonKey)
             val fragmentManager = (itemView.context as AppCompatActivity).supportFragmentManager
             val transaction = fragmentManager?.beginTransaction()
             transaction?.replace(R.id.fragment, fragment)?.commit()

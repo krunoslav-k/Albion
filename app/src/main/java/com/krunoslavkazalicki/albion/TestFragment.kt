@@ -17,6 +17,9 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class TestFragment : Fragment() {
 
@@ -58,20 +61,40 @@ class TestFragment : Fragment() {
                 .addOnSuccessListener { result ->
                     var i = 0
                     for(document in result){
-                        if((sharedPreferences?.getString("answear${i}", null).equals(document.data.get("correctAnswear").toString()))){
+                        if((sharedPreferences?.getString("answear${i}", null).equals(document.data.get("correctAnswear").toString(), true))){
                                 correctAnswearsCount++
                             }
-                        Log.e("Tag", "${sharedPreferences?.getString("answear${i}", null)}")
-                        Log.e("Tag", "${document.data.get("correctAnswear").toString()}")
                         i++
                     }
-                }
 
-            Toast.makeText(context, "Correct answears: ${correctAnswearsCount}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Correct answears: ${correctAnswearsCount}", Toast.LENGTH_SHORT).show()
+
+                    val result = hashMapOf(
+                        "result" to correctAnswearsCount,
+                        "timestamp" to getCurrentDateTime()
+                    )
+
+                    db.collection("Results")
+                        .add(result)
+                        .addOnSuccessListener { documentReference ->
+                            Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.w(ContentValues.TAG, "Error adding document", e)
+                        }
+                }
         }
 
         return view
     }
 
+    fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
+        val formatter = SimpleDateFormat(format, locale)
+        return formatter.format(this)
+    }
+
+    fun getCurrentDateTime(): Date {
+        return Calendar.getInstance().time
+    }
 
 }
