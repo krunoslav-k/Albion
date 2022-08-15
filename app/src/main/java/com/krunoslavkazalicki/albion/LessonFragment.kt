@@ -25,7 +25,7 @@ class LessonFragment(val lessonKey: String) : Fragment() {
         val db = Firebase.firestore
 
         Toast.makeText(context, "Lesson key: ${lessonKey}", Toast.LENGTH_SHORT).show()
-        db.collection("Units/Verbs/${lessonKey}")
+        db.collection("Units/Verbs/Present")
                 .get()
                 .addOnSuccessListener { result ->
 

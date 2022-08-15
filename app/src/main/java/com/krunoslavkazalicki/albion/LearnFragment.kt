@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -25,11 +26,11 @@ class LearnFragment : Fragment() {
         val adjectivesLesssons: List<String> = listOf("Superlative", "General")
         var lessonsList: List<List<String>> = listOf(verbsLessons, nounsLessons, adjectivesLesssons)
 
-        val transaction = fragmentManager
+        val fragmentManager: FragmentManager? = fragmentManager
 
         view.findViewById<RecyclerView>(R.id.units_rv).apply {
             layoutManager = LinearLayoutManager(this@LearnFragment.context)
-            adapter = UnitRecyclerAdapter(units, lessonsList)
+            adapter = UnitRecyclerAdapter(units, lessonsList, fragmentManager)
         }
 
         return view
