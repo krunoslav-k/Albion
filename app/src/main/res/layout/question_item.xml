@@ -10,9 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="10dp"
+        android:fontFamily="@font/open_sans_bold"
         android:text="TextView"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,27 +29,31 @@
         app:layout_constraintTop_toBottomOf="@+id/questionText_tv">
 
         <RadioButton
-            android:id="@+id/thirdAnswear_rb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RadioButton" />
-
-        <RadioButton
-            android:id="@+id/fourthAnswear_rb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RadioButton" />
-
-        <RadioButton
             android:id="@+id/firstAnswear_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans"
             android:text="RadioButton" />
 
         <RadioButton
             android:id="@+id/secondAnswear_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/thirdAnswear_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/fourthAnswear_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans"
             android:text="RadioButton" />
 
     </RadioGroup>

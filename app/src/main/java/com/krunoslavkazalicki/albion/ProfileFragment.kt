@@ -23,7 +23,7 @@ class ProfileFragment : Fragment() {
         val db = Firebase.firestore
 
         db.collection("Results")
-            .orderBy("timestamp", Query.Direction.ASCENDING)
+            .orderBy("timestamp", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
                 var results: MutableList<Result> = ArrayList<Result>()
