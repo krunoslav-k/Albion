@@ -43,7 +43,6 @@ class LessonRecyclerAdapter(private var lessons: List<String>, val fragmentManag
         }
 
         fun startLessonFragment(lessonKey: String, fragmentManager: FragmentManager?){
-
             val lessonFragment = LessonFragment(lessonKey)
             val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.fragment, lessonFragment)?.commit()

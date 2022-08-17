@@ -26,6 +26,8 @@ class LearnFragment : Fragment() {
         val adjectivesLesssons: List<String> = listOf("Superlative", "General")
         var lessonsList: List<List<String>> = listOf(verbsLessons, nounsLessons, adjectivesLesssons)
 
+        //TODO dohvatiti s firebasea db profili/rezultati koji je level i na temelju toga proslijediti odgovarajucu listu lekcija za taj level (za svaki unit napraviti tri liste lekcija za svaki level; kao iznad)
+
         val fragmentManager: FragmentManager? = fragmentManager
 
         view.findViewById<RecyclerView>(R.id.units_rv).apply {
