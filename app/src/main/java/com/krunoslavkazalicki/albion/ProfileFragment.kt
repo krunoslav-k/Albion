@@ -29,9 +29,9 @@ class ProfileFragment : Fragment() {
                 var results: MutableList<Result> = ArrayList<Result>()
 
                 for (document in result) {
-                    var numResult: Int = document.data.get("result").toString().toInt()
-                    //var date: Date = (document.data.get("timestamp") as Timestamp).toDate()
-                    results.add(Result(numResult, null))
+                    results.add(Result(
+                            document.data.get("result").toString().toInt(),
+                            (document.data.get("timestamp") as Timestamp).toDate()))
                 }
 
                 view.findViewById<RecyclerView>(R.id.results_rv).apply {
@@ -43,15 +43,6 @@ class ProfileFragment : Fragment() {
             .addOnFailureListener { exception ->
                 Log.w(ContentValues.TAG, "Error getting documents.", exception)
             }
-
-        //var results = listOf<Result>(Result(10, (("13.05.2022") as Timestamp).toDate()))
-        //var results = listOf<Result>()
-
-/*        view.findViewById<RecyclerView>(R.id.results_rv).apply {
-            layoutManager = LinearLayoutManager(this@ProfileFragment.context)
-            adapter = ResultRecyclerAdapter(results)
-        } */
-
 
         return view
     }
