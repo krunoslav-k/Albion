@@ -10,4 +10,13 @@
     <string name="take_test_button_text">Take the test</string>
     <string name="continue_learning_button_text">Continue learning</string>
     <string name="flag_icon_text_description">slashed British and US flags</string>
+    <string name="standardized_test">Standardized test</string>
+    <string name="finish_test">Finish test</string>
+    <string name="test_intro">Please choose the correct answer in each multiple choices question</string>
+    <string name="level_result_paragraph">Analyzing the results of your test, it was concluded that you belong to the proficiency level:</string>
+    <string name="number_result_paragraph">The result of your test show that you have scored:</string>
+    <string name="go_to_profile_paragraph">To see your previous results, go to your profile</string>
+    <string name="go_learn_paragraph">To improve your knowledge, see the new lessons you have been introduced to</string>
+    <string name="profile">Profile</string>
+    <string name="learn">Learn</string>
 </resources>

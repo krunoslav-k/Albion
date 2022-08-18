@@ -27,7 +27,19 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, saved
         .get()
         .addOnSuccessListener { result ->
             for (document in result) {
-                numberResultTextView.text = document.data.get("result").toString()
+                var score = document.data.get("result").toString()
+                var level: String
+
+                if (score.toInt() >= 21) {
+                    level = "Advanced" //A
+                } else if (score.toInt() >= 12 && score.toInt() < 21) {
+                    level = "Intermediate" //B
+                } else {
+                    level = "Beginner" //C
+                }
+
+                numberResultTextView.text = "${score}/30"
+                levelResultTextView.text = level
             }
         }
         .addOnFailureListener { exception ->

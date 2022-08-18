@@ -67,7 +67,8 @@ class TestFragment : Fragment() {
                         i++
                     }
 
-                    Toast.makeText(context, "Correct answears: ${correctAnswearsCount}", Toast.LENGTH_SHORT).show()
+                    //for testing purposes
+                    //Toast.makeText(context, "Correct answears: ${correctAnswearsCount}", Toast.LENGTH_SHORT).show()
 
                     val result = hashMapOf(
                         "result" to correctAnswearsCount,
