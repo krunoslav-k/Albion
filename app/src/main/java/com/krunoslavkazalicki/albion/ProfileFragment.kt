@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Timestamp
@@ -20,6 +21,7 @@ class ProfileFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        val currentLevelTextView: TextView = view.findViewById(R.id.currentLevel_tv)
         val db = Firebase.firestore
 
         db.collection("Results")
@@ -43,6 +45,29 @@ class ProfileFragment : Fragment() {
             .addOnFailureListener { exception ->
                 Log.w(ContentValues.TAG, "Error getting documents.", exception)
             }
+
+        db.collection("Results")
+                .orderBy("timestamp", Query.Direction.DESCENDING).limit(1)
+                .get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        var score = document.data.get("result").toString()
+                        var level: String
+
+                        if (score.toInt() >= 21) {
+                            level = "Advanced" //A
+                        } else if (score.toInt() >= 12 && score.toInt() < 21) {
+                            level = "Intermediate" //B
+                        } else {
+                            level = "Beginner" //C
+                        }
+
+                        currentLevelTextView.text = level
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.w(ContentValues.TAG, "Error getting documents.", exception)
+                }
 
         return view
     }

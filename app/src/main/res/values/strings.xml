@@ -19,4 +19,6 @@
     <string name="go_learn_paragraph">To improve your knowledge, see the new lessons you have been introduced to</string>
     <string name="profile">Profile</string>
     <string name="learn">Learn</string>
+    <string name="list_of_past_results">This is a list of your past results</string>
+    <string name="currently_at_level">You are currently at level:</string>
 </resources>

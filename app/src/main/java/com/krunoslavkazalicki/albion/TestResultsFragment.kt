@@ -20,6 +20,7 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, saved
     val numberResultTextView: TextView = view.findViewById(R.id.numberResult_tv)
     val levelResultTextView: TextView = view.findViewById(R.id.levelResult_tv)
     val goToProfileButton: Button = view.findViewById(R.id.goToProfile_btn)
+    val learnButton: Button = view.findViewById(R.id.learn_btn)
     val db = Firebase.firestore
 
     db.collection("Results")
@@ -52,6 +53,11 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, saved
         transaction?.replace(R.id.fragment, fragment)?.commit()
     }
 
+    learnButton.setOnClickListener {
+        val fragment = LearnFragment()
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.replace(R.id.fragment, fragment)?.commit()
+    }
 
     return view
     }
