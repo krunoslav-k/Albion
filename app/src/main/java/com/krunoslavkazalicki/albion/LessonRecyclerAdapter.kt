@@ -36,7 +36,6 @@ class LessonRecyclerAdapter(private var lessons: List<String>, val fragmentManag
 
     class LessonViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         private val lessonNameTextView: TextView = itemView.findViewById(R.id.lessonName_tv)
-        private val lessonImageView: ImageView = itemView.findViewById(R.id.lessonImage_iv)
 
         fun bind(lesson: String){
             lessonNameTextView.text = lesson
