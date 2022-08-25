@@ -17,22 +17,21 @@ import com.google.firebase.ktx.Firebase
 
 class LessonFragment(val lessonKey: String) : Fragment() {
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View? {
         val view = inflater.inflate(R.layout.fragment_lesson, container, false)
-        val lessonTextView: TextView = view.findViewById(R.id.lesson_tv)
+        val lessonTitleTextView: TextView = view.findViewById(R.id.lessonTitle_tv)
 
         val db = Firebase.firestore
 
         Toast.makeText(context, "Lesson key: ${lessonKey}", Toast.LENGTH_SHORT).show()
-        db.collection("Units/Verbs/Present")
+        db.collection("Units/Verbs/${lessonKey.filter { !it.isWhitespace() }}")
                 .get()
                 .addOnSuccessListener { result ->
 
                     for (document in result){
                         var defintion = document.data.get("defintion").toString()
 
-                        lessonTextView.text = defintion
+                        lessonTitleTextView.text = defintion
                     }
 
                 }

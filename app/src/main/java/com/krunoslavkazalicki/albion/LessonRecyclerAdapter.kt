@@ -45,7 +45,6 @@ class LessonRecyclerAdapter(private var lessons: List<String>, val fragmentManag
             val lessonFragment = LessonFragment(lessonKey)
             val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.fragment, lessonFragment)?.commit()
-
         }
 
     }

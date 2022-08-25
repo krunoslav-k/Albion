@@ -10,11 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.Timestamp
-import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
@@ -37,9 +34,9 @@ class TestFragment : Fragment() {
 
                     for (document in result){
                         var questionText = document.data.get("questionText").toString()
-                        var answears: List<String> = document.data.get("answears") as List<String>
-                        var correctAnswear = document.data.get("correctAnswear").toString()
-                        var question = Question(questionText, answears, correctAnswear)
+                        var answers: List<String> = document.data.get("answers") as List<String>
+                        var correctAnswer = document.data.get("correctAnswer").toString()
+                        var question = Question(questionText, answers, correctAnswer)
 
                         questions.add(question)
                     }
@@ -54,24 +51,24 @@ class TestFragment : Fragment() {
                 }
 
         finishTestButton.setOnClickListener {
-            var correctAnswearsCount: Int = 0
+            var correctAnswersCount: Int = 0
 
             db.collection("TestQuestions")
                 .get()
                 .addOnSuccessListener { result ->
                     var i = 0
                     for(document in result){
-                        if((sharedPreferences?.getString("answear${i}", null).equals(document.data.get("correctAnswear").toString(), true))){
-                                correctAnswearsCount++
+                        if((sharedPreferences?.getString("answer${i}", null).equals(document.data.get("correctAnswer").toString(), true))){
+                                correctAnswersCount++
                             }
                         i++
                     }
 
                     //for testing purposes
-                    //Toast.makeText(context, "Correct answears: ${correctAnswearsCount}", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, "Correct answers: ${correctAnswersCount}", Toast.LENGTH_SHORT).show()
 
                     val result = hashMapOf(
-                        "result" to correctAnswearsCount,
+                        "result" to correctAnswersCount,
                         "timestamp" to getCurrentDateTime()
                     )
 
