@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
-        android:id="@+id/answears_rg"
+        android:id="@+id/answers_rg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
@@ -29,28 +29,28 @@
         app:layout_constraintTop_toBottomOf="@+id/questionText_tv">
 
         <RadioButton
-            android:id="@+id/firstAnswear_rb"
+            android:id="@+id/firstAnswer_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
             android:text="RadioButton" />
 
         <RadioButton
-            android:id="@+id/secondAnswear_rb"
+            android:id="@+id/secondAnswer_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
             android:text="RadioButton" />
 
         <RadioButton
-            android:id="@+id/thirdAnswear_rb"
+            android:id="@+id/thirdAnswer_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
             android:text="RadioButton" />
 
         <RadioButton
-            android:id="@+id/fourthAnswear_rb"
+            android:id="@+id/fourthAnswer_rb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"

@@ -1,6 +1,5 @@
 package com.krunoslavkazalicki.albion
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +19,7 @@ class QuestionRecyclerAdapter(private var questions: List<Question>, private val
         when(holder) {
             is QuestionViewHolder -> {
                 holder.bind(questions[position])
-                holder.checkAnswears(position)
+                holder.checkAnswers(position)
             }
         }
     }
@@ -31,43 +30,43 @@ class QuestionRecyclerAdapter(private var questions: List<Question>, private val
 
     class QuestionViewHolder(itemView: View, private val editor: SharedPreferences.Editor?): RecyclerView.ViewHolder(itemView){
         private val questionTextTextView: TextView = itemView.findViewById(R.id.questionText_tv)
-        private val answearsRadioGroup: RadioGroup = itemView.findViewById(R.id.answears_rg)
-        private val firstAnswearRadioButton: RadioButton = itemView.findViewById(R.id.firstAnswear_rb)
-        private val secondAnswearRadioButton: RadioButton = itemView.findViewById(R.id.secondAnswear_rb)
-        private val thirdAnswearRadioButton: RadioButton = itemView.findViewById(R.id.thirdAnswear_rb)
-        private val fourthAnswearRadioButton: RadioButton = itemView.findViewById(R.id.fourthAnswear_rb)
+        private val answersRadioGroup: RadioGroup = itemView.findViewById(R.id.answers_rg)
+        private val firstAnswerRadioButton: RadioButton = itemView.findViewById(R.id.firstAnswer_rb)
+        private val secondAnswerRadioButton: RadioButton = itemView.findViewById(R.id.secondAnswer_rb)
+        private val thirdAnswerRadioButton: RadioButton = itemView.findViewById(R.id.thirdAnswer_rb)
+        private val fourthAnswerRadioButton: RadioButton = itemView.findViewById(R.id.fourthAnswer_rb)
 
         fun bind(question: Question){
             questionTextTextView.text = question.questionText
-            firstAnswearRadioButton.text = question.answears[0]
-            secondAnswearRadioButton.text = question.answears[1]
-            thirdAnswearRadioButton.text = question.answears[2]
-            fourthAnswearRadioButton.text = question.answears[3]
+            firstAnswerRadioButton.text = question.answers[0]
+            secondAnswerRadioButton.text = question.answers[1]
+            thirdAnswerRadioButton.text = question.answers[2]
+            fourthAnswerRadioButton.text = question.answers[3]
         }
 
-        fun checkAnswears(position: Int){
-            answearsRadioGroup.setOnCheckedChangeListener { radioGroup, checkedId ->
+        fun checkAnswers(position: Int){
+            answersRadioGroup.setOnCheckedChangeListener { radioGroup, checkedId ->
                 val radio = itemView.findViewById<RadioButton>(checkedId)
 
                 when (radio) {
-                    firstAnswearRadioButton -> {
+                    firstAnswerRadioButton -> {
                         editor.apply {
-                            this?.putString("answear${position}", "${firstAnswearRadioButton.text.toString()}")
+                            this?.putString("answer${position}", "${firstAnswerRadioButton.text.toString()}")
                         }?.apply()
                     }
-                    secondAnswearRadioButton -> {
+                    secondAnswerRadioButton -> {
                         editor.apply {
-                            this?.putString("answear${position}", "${secondAnswearRadioButton.text.toString()}")
+                            this?.putString("answer${position}", "${secondAnswerRadioButton.text.toString()}")
                         }?.apply()
                     }
-                    thirdAnswearRadioButton -> {
+                    thirdAnswerRadioButton -> {
                         editor.apply {
-                            this?.putString("answear${position}", "${thirdAnswearRadioButton.text.toString()}")
+                            this?.putString("answer${position}", "${thirdAnswerRadioButton.text.toString()}")
                         }?.apply()
                     }
-                    fourthAnswearRadioButton -> {
+                    fourthAnswerRadioButton -> {
                         editor.apply {
-                            this?.putString("answear${position}", "${fourthAnswearRadioButton.text.toString()}")
+                            this?.putString("answer${position}", "${fourthAnswerRadioButton.text.toString()}")
                         }?.apply()
                     }
                 }
