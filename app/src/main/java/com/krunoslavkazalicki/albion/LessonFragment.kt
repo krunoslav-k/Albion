@@ -20,6 +20,10 @@ class LessonFragment(val lessonKey: String) : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View? {
         val view = inflater.inflate(R.layout.fragment_lesson, container, false)
         val lessonTitleTextView: TextView = view.findViewById(R.id.lessonTitle_tv)
+        val lessonIntroTextView: TextView = view.findViewById(R.id.lessonIntro_tv)
+        val lessonFormTextView: TextView = view.findViewById(R.id.lessonForm_tv)
+        val lessonUsageTextView: TextView = view.findViewById(R.id.lessonUsage_tv)
+        val lessonExamplesTextView: TextView = view.findViewById(R.id.lessonExamples_tv)
 
         val db = Firebase.firestore
 
@@ -29,9 +33,11 @@ class LessonFragment(val lessonKey: String) : Fragment() {
                 .addOnSuccessListener { result ->
 
                     for (document in result){
-                        var defintion = document.data.get("defintion").toString()
-
-                        lessonTitleTextView.text = defintion
+                        lessonTitleTextView.text = document.data.get("title").toString()
+                        lessonIntroTextView.text = document.data.get("introduction").toString()
+                        lessonFormTextView.text = document.data.get("form").toString()
+                        lessonUsageTextView.text = document.data.get("usage").toString()
+                        lessonExamplesTextView.text = document.data.get("examples").toString()
                     }
 
                 }

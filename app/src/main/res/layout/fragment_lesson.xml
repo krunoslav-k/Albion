@@ -39,7 +39,7 @@
 
         <TextView
             android:id="@+id/lessonIntro_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="8dp"
@@ -63,7 +63,7 @@
 
         <TextView
             android:id="@+id/lessonForm_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="8dp"
@@ -87,7 +87,7 @@
 
         <TextView
             android:id="@+id/lessonUsage_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="8dp"
@@ -111,7 +111,7 @@
 
         <TextView
             android:id="@+id/lessonExamples_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="8dp"
